@@ -1,0 +1,11 @@
+- name: download docker.sh using wget (python 2.7.6 breaks using get_url mod)
+  command: wget -O /tmp/docker.sh https://get.docker.com/
+  tags: docker
+
+- name: install docker
+  command: sh /tmp/docker.sh
+  tags: docker
+
+- name: add permissions to the user (os restart required to work)
+  command: usermod -aG docker $USER
+  tags: docker

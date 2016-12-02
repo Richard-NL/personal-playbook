@@ -1,26 +1,7 @@
 ---
-- name: install guake
-  apt: name=guake state=installed
-
-- name: install kompare
-  apt: name=kompare state=installed
-
-- name: Create default workspace dir and script dir
-  file: path=/home/richard/workspace/scripts state=directory seuser=richard serole=richard recurse=yes
-
-- name: Add keepass repo
-  apt_repository: repo='ppa:jtaylor/keepass' state=present
-
-- name: Install Keepass
-  apt: name=keepass2
-
-#chrome
-- name: download chrome
-  get_url:
-    url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    dest: /tmp/chrome.deb
-  tags: chrome
-
-- name: install chrome
-  shell: dpkg -i /tmp/chrome.deb
-  tags: chrome
+- include: desktop_applications.yml
+- include: docker.yml
+- name: create my.cnf
+  template:
+    src: my.cnf.j2
+    dest: "/home/richard/.my.cnf"

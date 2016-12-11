@@ -1,0 +1,16 @@
+- name: Download Apache Thrift
+  get_url:
+    url: http://apache.40b.nl/thrift/0.9.3/thrift-0.9.3.tar.gz
+    dest: /tmp/thrift.tar.gz
+
+- unarchive:
+    src: /tmp/thrift.tar.gz
+    dest: /tmp/
+- name: Configure Apache Thrift
+  command: chdir=/tmp/thrift-0.9.3 ./configure
+
+- name: Make Apache Thrift
+  command: chdir=/tmp/thrift-0.9.3 make
+
+- name: Install Apache Thrift
+  command: chdir=/tmp/thrift-0.9.3 make install

@@ -1,6 +1,7 @@
 ---
 - include: desktop_applications.yml
 - include: docker.yml
+- include: thrift.yml
 - name: create my.cnf
   template:
     src: my.cnf.j2

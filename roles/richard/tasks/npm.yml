@@ -1,0 +1,8 @@
+- name: install nodejs
+  apt: name=nodejs state=installed
+
+- name: install npm
+  apt: name=npm state=installed
+
+- name: install less
+  command: npm install -g less
